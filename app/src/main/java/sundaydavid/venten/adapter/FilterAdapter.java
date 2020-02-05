@@ -37,8 +37,8 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
     @Override
     public void onBindViewHolder(@NonNull FilterViewHolder holder, int position) {
 
-        holder.startYear.setText(ventenFilters.get(position).getStartYear());
-        holder.endYear.setText(ventenFilters.get(position).getEndYear());
+//        holder.startYear.setText(ventenFilters.get(position).getStartYear());
+//        holder.endYear.setText(ventenFilters.get(position).getEndYear());
         holder.gender.setText(ventenFilters.get(position).getGender());
 
     }

@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 
 public interface ApiInterface {
 
-    @GET("filter.json")
+    @GET("assessment/filter.json")
     Call<List<VentenFilter>> getVentenFilter();
 }
