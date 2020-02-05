@@ -33,4 +33,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+    //openCsv
+    implementation 'com.opencsv:opencsv:4.6'
 }

@@ -40,8 +40,6 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
     @Override
     public void onBindViewHolder(@NonNull FilterViewHolder holder, final int position) {
 
-//        holder.startYear.setText(ventenFilters.get(position).getStartYear());
-//        holder.endYear.setText(ventenFilters.get(position).getEndYear());
         holder.gender.setText(ventenFilters.get(position).getGender());
         holder.startYear.setText(String.format(String.valueOf(ventenFilters.get(position).getStartYear())));
         holder.endYear.setText(String.format(String.valueOf(ventenFilters.get(position).getEndYear())));
@@ -69,7 +67,6 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
                 Toast.makeText(context, String.valueOf(ventenFilters.get(position).getId()), Toast.LENGTH_SHORT).show();
             }
         });
-
 
     }
 
