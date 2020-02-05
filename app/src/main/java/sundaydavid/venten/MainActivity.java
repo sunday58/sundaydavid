@@ -46,22 +46,22 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<VentenFilter>> call, Response<List<VentenFilter>> response) {
                 progressDialog.dismiss();
                 ventenFilters = response.body();
-                Log.d(TAG, "onResponse: end point" + response.body().get(0).getGender());
+                Log.d(TAG, "onResponse: end point " + response.body().get(0).getStartYear());
                 setDataInRecyclerView();
             }
 
             @Override
             public void onFailure(Call<List<VentenFilter>> call, Throwable t) {
                 progressDialog.dismiss();
-                Toast.makeText(MainActivity.this, t.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "check network connection", Toast.LENGTH_LONG).show();
             }
         });
     }
 
     private void setDataInRecyclerView(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
-        recyclerView.setLayoutManager(linearLayoutManager);
         FilterAdapter filterAdapter = new FilterAdapter(MainActivity.this, ventenFilters);
+        recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(filterAdapter);
     }
 }

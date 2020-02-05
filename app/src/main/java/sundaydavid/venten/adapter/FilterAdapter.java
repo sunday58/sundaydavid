@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +22,8 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
     List<VentenFilter> ventenFilters;
     List<String> countries = new ArrayList<>();
 
+
+
     public FilterAdapter(Context context, List<VentenFilter> ventenFilters){
         this.ventenFilters = ventenFilters;
         this.context = context;
@@ -29,17 +32,44 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
     @NonNull
     @Override
     public FilterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.filter_list, null);
-        FilterViewHolder filterViewHolder = new FilterViewHolder(view);
-        return filterViewHolder;
+       LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+       View view = layoutInflater.inflate(R.layout.filter_list, parent, false);
+       return new FilterViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FilterViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FilterViewHolder holder, final int position) {
 
 //        holder.startYear.setText(ventenFilters.get(position).getStartYear());
 //        holder.endYear.setText(ventenFilters.get(position).getEndYear());
         holder.gender.setText(ventenFilters.get(position).getGender());
+        holder.startYear.setText(String.format(String.valueOf(ventenFilters.get(position).getStartYear())));
+        holder.endYear.setText(String.format(String.valueOf(ventenFilters.get(position).getEndYear())));
+
+        holder.countries.setText(ventenFilters.get(position).getCountries().toString());
+//        holder.colors.setText(ventenFilters.get(position).getColors().toString());
+
+        ArrayList<String> colorful = new ArrayList<>();
+        colorful.add(ventenFilters.get(position).getColors().toString());
+        StringBuffer sb = new StringBuffer();
+
+        for (String s : colorful){
+            sb.append(s);
+            sb.append(", ");
+
+        }
+
+        String str = sb.toString();
+        holder.colors.setText(str);
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, String.valueOf(ventenFilters.get(position).getId()), Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 
