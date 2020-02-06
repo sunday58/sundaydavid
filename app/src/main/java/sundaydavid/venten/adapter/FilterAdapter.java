@@ -1,6 +1,7 @@
 package sundaydavid.venten.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import sundaydavid.venten.CarOwnersActivity;
 import sundaydavid.venten.R;
 import sundaydavid.venten.data.VentenFilter;
 
@@ -20,9 +22,6 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
 
     Context context;
     List<VentenFilter> ventenFilters;
-    List<String> countries = new ArrayList<>();
-
-
 
     public FilterAdapter(Context context, List<VentenFilter> ventenFilters){
         this.ventenFilters = ventenFilters;
@@ -45,28 +44,40 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
         holder.endYear.setText(String.format(String.valueOf(ventenFilters.get(position).getEndYear())));
 
         holder.countries.setText(ventenFilters.get(position).getCountries().toString());
-//        holder.colors.setText(ventenFilters.get(position).getColors().toString());
 
-        ArrayList<String> colorful = new ArrayList<>();
-        colorful.add(ventenFilters.get(position).getColors().toString());
-        StringBuffer sb = new StringBuffer();
 
-        for (String s : colorful){
-            sb.append(s);
-            sb.append(", ");
+        ArrayList<String>  arrayListCountry = new ArrayList<>();
+        arrayListCountry.add(ventenFilters.get(position).getColors().toString());
+        StringBuilder builderCountry = new StringBuilder();
+
+        for (String value : arrayListCountry){
+            builderCountry.append(value);
+
 
         }
+        String formattedStringCountry = builderCountry.toString()
+                .replace("[", "")
+                .replace("]", "")
+                .replace(",", "")
+                .trim();
+        holder.countries.setText(formattedStringCountry);
 
-        String str = sb.toString();
-        holder.colors.setText(str);
+
+        ArrayList<String>  arrayList = new ArrayList<>();
+        arrayList.add(ventenFilters.get(position).getColors().toString());
+        StringBuilder builder = new StringBuilder();
+
+        for (String value : arrayList){
+            builder.append(value);
 
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, String.valueOf(ventenFilters.get(position).getId()), Toast.LENGTH_SHORT).show();
-            }
-        });
+        }
+        String formattedString = builder.toString()
+                .replace("[", "")
+                .replace("]", "")
+                .replace(",", "")
+                .trim();
+        holder.colors.setText(formattedString);
 
     }
 
@@ -75,7 +86,7 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
         return ventenFilters.size();
     }
 
-    class FilterViewHolder extends RecyclerView.ViewHolder{
+    class FilterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView startYear, endYear, gender, countries, colors;
 
@@ -87,6 +98,17 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
             gender = itemView.findViewById(R.id.gender_data);
             countries = itemView.findViewById(R.id.countries_data);
             colors = itemView.findViewById(R.id.colors_data);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            VentenFilter ventenFilter = ventenFilters.get(position);
+            Intent intent = new Intent(v.getContext(), CarOwnersActivity.class);
+            intent.putExtra("filters", ventenFilter);
+            v.getContext().startActivity(intent);
         }
     }
 }

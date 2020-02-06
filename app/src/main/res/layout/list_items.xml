@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="4dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="15dp"
+    android:orientation="horizontal">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/first_name_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" First Name:"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/first_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="David"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/first_name_data"
+        app:layout_constraintStart_toEndOf="@+id/first_name_data"
+        app:layout_constraintTop_toTopOf="@+id/first_name_data" />
+
+    <TextView
+        android:id="@+id/last_name_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text=" Last Name:"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/first_name_data" />
+
+    <TextView
+        android:id="@+id/last_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Sunday"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/last_name_data"
+        app:layout_constraintStart_toEndOf="@+id/last_name_data"
+        app:layout_constraintTop_toTopOf="@+id/last_name_data" />
+
+    <TextView
+        android:id="@+id/email_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Email:"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/last_name_data" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="dsunday58@gmail.com"
+        app:layout_constraintBottom_toBottomOf="@+id/email_data"
+        app:layout_constraintStart_toEndOf="@+id/email_data"
+        app:layout_constraintTop_toTopOf="@+id/email_data" />
+
+    <TextView
+        android:id="@+id/country_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Country:"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_data" />
+
+    <TextView
+        android:id="@+id/car_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Nigeria"
+        app:layout_constraintBottom_toBottomOf="@+id/country_data"
+        app:layout_constraintStart_toEndOf="@+id/country_data"
+        app:layout_constraintTop_toTopOf="@+id/country_data" />
+
+    <TextView
+        android:id="@+id/car_model_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Car Model:"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/country_data" />
+
+    <TextView
+        android:id="@+id/car_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Lexus"
+        app:layout_constraintBottom_toBottomOf="@+id/car_model_data"
+        app:layout_constraintStart_toEndOf="@+id/car_model_data"
+        app:layout_constraintTop_toTopOf="@+id/car_model_data" />
+
+    <TextView
+        android:id="@+id/car_model_year_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Car Model Year:"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/car_model_data" />
+
+    <TextView
+        android:id="@+id/car_model_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="1990"
+        app:layout_constraintBottom_toBottomOf="@+id/car_model_year_data"
+        app:layout_constraintStart_toEndOf="@+id/car_model_year_data"
+        app:layout_constraintTop_toTopOf="@+id/car_model_year_data" />
+
+    <TextView
+        android:id="@+id/car_color_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Car Color:"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/car_model_year_data" />
+
+    <TextView
+        android:id="@+id/car_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Red"
+        app:layout_constraintBottom_toBottomOf="@+id/car_color_data"
+        app:layout_constraintStart_toEndOf="@+id/car_color_data"
+        app:layout_constraintTop_toTopOf="@+id/car_color_data" />
+
+    <TextView
+        android:id="@+id/gender_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Gender:"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/car_color_data" />
+
+    <TextView
+        android:id="@+id/car_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Male"
+        app:layout_constraintBottom_toBottomOf="@+id/gender_data"
+        app:layout_constraintStart_toEndOf="@+id/gender_data"
+        app:layout_constraintTop_toTopOf="@+id/gender_data" />
+
+    <TextView
+        android:id="@+id/job_title_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Job Title:"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gender_data" />
+
+    <TextView
+        android:id="@+id/job_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Software Engineer"
+        app:layout_constraintBottom_toBottomOf="@+id/job_title_data"
+        app:layout_constraintStart_toEndOf="@+id/job_title_data"
+        app:layout_constraintTop_toBottomOf="@+id/gender_data" />
+
+    <TextView
+        android:id="@+id/bio_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="top"
+        android:text="Bio:"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/job_title_data" />
+
+    <TextView
+        android:id="@+id/bio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Simple code lover"
+        app:layout_constraintBottom_toBottomOf="@+id/bio_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bio_data"
+        app:layout_constraintTop_toTopOf="@+id/bio_data" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

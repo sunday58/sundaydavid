@@ -1,13 +1,16 @@
 
 package sundaydavid.venten.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class VentenFilter {
+public class VentenFilter implements Parcelable {
 
     private int id;
     @SerializedName("start_year")
@@ -31,6 +34,27 @@ public class VentenFilter {
         this.countries = countries;
         this.colors = colors;
     }
+
+    protected VentenFilter(Parcel in) {
+        id = in.readInt();
+        startYear = in.readInt();
+        endYear = in.readInt();
+        gender = in.readString();
+        countries = in.createStringArrayList();
+        colors = in.createStringArrayList();
+    }
+
+    public static final Creator<VentenFilter> CREATOR = new Creator<VentenFilter>() {
+        @Override
+        public VentenFilter createFromParcel(Parcel in) {
+            return new VentenFilter(in);
+        }
+
+        @Override
+        public VentenFilter[] newArray(int size) {
+            return new VentenFilter[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -88,4 +112,18 @@ public class VentenFilter {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(startYear);
+        dest.writeInt(endYear);
+        dest.writeString(gender);
+        dest.writeStringList(countries);
+        dest.writeStringList(colors);
+    }
 }
