@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.filter_recycler);
+        getSupportActionBar().setTitle("Car Filters");
 
         getUserListData();
     }
