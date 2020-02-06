@@ -43,16 +43,13 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterView
         holder.startYear.setText(String.format(String.valueOf(ventenFilters.get(position).getStartYear())));
         holder.endYear.setText(String.format(String.valueOf(ventenFilters.get(position).getEndYear())));
 
-        holder.countries.setText(ventenFilters.get(position).getCountries().toString());
-
 
         ArrayList<String>  arrayListCountry = new ArrayList<>();
-        arrayListCountry.add(ventenFilters.get(position).getColors().toString());
+        arrayListCountry.add(ventenFilters.get(position).getCountries().toString());
         StringBuilder builderCountry = new StringBuilder();
 
-        for (String value : arrayListCountry){
-            builderCountry.append(value);
-
+        for (String valueCountry : arrayListCountry){
+            builderCountry.append(valueCountry);
 
         }
         String formattedStringCountry = builderCountry.toString()
