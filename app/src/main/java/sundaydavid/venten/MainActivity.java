@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static String TAG = "MainActivity";
     RecyclerView recyclerView;
-    List<VentenFilter> ventenFilters;
+   public List<VentenFilter> ventenFilters;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         getUserListData();
     }
 
-    private void getUserListData() {
+    public void getUserListData() {
 
         final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.setCancelable(false);
