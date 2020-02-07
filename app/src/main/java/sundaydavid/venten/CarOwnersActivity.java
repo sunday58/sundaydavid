@@ -277,7 +277,6 @@ public class CarOwnersActivity extends AppCompatActivity {
                 return line;
             }
 
-
            else {
                 InputStream is = getResources().openRawResource(R.raw.car_ownsers_data);
 
@@ -296,6 +295,7 @@ public class CarOwnersActivity extends AppCompatActivity {
                         String[] tokens = line.split(",");
 
                         CarOwnersList list = new CarOwnersList();
+
 
                         //setters
                         list.setBio(tokens[10]);

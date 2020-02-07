@@ -36,4 +36,7 @@ dependencies {
 
     //openCsv
     implementation 'com.opencsv:opencsv:4.6'
+
+    //mockito
+    testImplementation 'org.mockito:mockito-core:3.2.0'
 }
