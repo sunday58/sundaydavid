@@ -35,18 +35,87 @@ public class CarDetailsAdapter extends RecyclerView.Adapter<CarDetailsAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
+       if (mData.get(position).getGender() == null && mData.get(position).getCountry() == null
+                && mData.get(position).getCar_color() == null){
 
-        holder.firstName.setText(mData.get(position).getFirst_name());
-        holder.lastName.setText(mData.get(position).getLast_name());
-        holder.email.setText(mData.get(position).getEmail());
-        holder.country.setText(mData.get(position).getCountry());
-        holder.carModel.setText(mData.get(position).getCar_model());
-        holder.carColor.setText(mData.get(position).getCar_color());
-        holder.gender.setText(mData.get(position).getGender());
-        holder.jobTitle.setText(mData.get(position).getJob_title());
-        holder.bio.setText(mData.get(position).getBio());
+            holder.gender.setVisibility(View.GONE);
+            holder.genderData.setVisibility(View.GONE);
+            holder.country.setVisibility(View.GONE);
+            holder.countryData.setVisibility(View.GONE);
+            holder.carColor.setVisibility(View.GONE);
+            holder.colorData.setVisibility(View.GONE);
 
-        holder.carModelYear.setText(mData.get(position).getCar_model_year());
+
+            holder.firstName.setText(mData.get(position).getFirst_name());
+            holder.lastName.setText(mData.get(position).getLast_name());
+            holder.email.setText(mData.get(position).getEmail());
+            holder.carModel.setText(mData.get(position).getCar_model());
+            holder.jobTitle.setText(mData.get(position).getJob_title());
+            holder.bio.setText(mData.get(position).getBio());
+
+            holder.carModelYear.setText(mData.get(position).getCar_model_year());
+        }else if (mData.get(position).getGender() == null && mData.get(position).getCar_color()==null){
+
+            holder.gender.setVisibility(View.GONE);
+            holder.genderData.setVisibility(View.GONE);
+            holder.carColor.setVisibility(View.GONE);
+            holder.colorData.setVisibility(View.GONE);
+
+
+            holder.firstName.setText(mData.get(position).getFirst_name());
+            holder.lastName.setText(mData.get(position).getLast_name());
+            holder.email.setText(mData.get(position).getEmail());
+            holder.country.setText(mData.get(position).getCountry());
+            holder.carModel.setText(mData.get(position).getCar_model());
+            holder.jobTitle.setText(mData.get(position).getJob_title());
+            holder.bio.setText(mData.get(position).getBio());
+
+            holder.carModelYear.setText(mData.get(position).getCar_model_year());
+        } else if (mData.get(position).getGender() == null){
+           holder.gender.setVisibility(View.GONE);
+           holder.genderData.setVisibility(View.GONE);
+
+           holder.firstName.setText(mData.get(position).getFirst_name());
+           holder.lastName.setText(mData.get(position).getLast_name());
+           holder.email.setText(mData.get(position).getEmail());
+           holder.country.setText(mData.get(position).getCountry());
+           holder.carModel.setText(mData.get(position).getCar_model());
+           holder.carColor.setText(mData.get(position).getCar_color());
+           holder.jobTitle.setText(mData.get(position).getJob_title());
+           holder.bio.setText(mData.get(position).getBio());
+
+           holder.carModelYear.setText(mData.get(position).getCar_model_year());
+       }else if (mData.get(position).getCountry() == null){
+
+           holder.country.setVisibility(View.GONE);
+           holder.countryData.setVisibility(View.GONE);
+
+           holder.firstName.setText(mData.get(position).getFirst_name());
+           holder.lastName.setText(mData.get(position).getLast_name());
+           holder.email.setText(mData.get(position).getEmail());
+           holder.carModel.setText(mData.get(position).getCar_model());
+           holder.carColor.setText(mData.get(position).getCar_color());
+           holder.gender.setText(mData.get(position).getGender());
+           holder.jobTitle.setText(mData.get(position).getJob_title());
+           holder.bio.setText(mData.get(position).getBio());
+
+           holder.carModelYear.setText(mData.get(position).getCar_model_year());
+       }
+       else {
+
+           holder.firstName.setText(mData.get(position).getFirst_name());
+           holder.lastName.setText(mData.get(position).getLast_name());
+           holder.email.setText(mData.get(position).getEmail());
+           holder.country.setText(mData.get(position).getCountry());
+           holder.carModel.setText(mData.get(position).getCar_model());
+           holder.carColor.setText(mData.get(position).getCar_color());
+           holder.gender.setText(mData.get(position).getGender());
+           holder.jobTitle.setText(mData.get(position).getJob_title());
+           holder.bio.setText(mData.get(position).getBio());
+
+           holder.carModelYear.setText(mData.get(position).getCar_model_year());
+       }
+
     }
 
     // total number of rows
@@ -60,6 +129,8 @@ public class CarDetailsAdapter extends RecyclerView.Adapter<CarDetailsAdapter.Vi
         TextView firstName, lastName, email, country, carModel, carModelYear, carColor, gender,
                 jobTitle, bio;
 
+        TextView genderData, countryData, colorData;
+
         ViewHolder(View itemView) {
             super(itemView);
             firstName = itemView.findViewById(R.id.first_name);
@@ -72,6 +143,11 @@ public class CarDetailsAdapter extends RecyclerView.Adapter<CarDetailsAdapter.Vi
             gender = itemView.findViewById(R.id.car_gender);
             jobTitle = itemView.findViewById(R.id.job_title);
             bio = itemView.findViewById(R.id.bio);
+
+            //datas
+            genderData = itemView.findViewById(R.id.gender_data);
+            countryData = itemView.findViewById(R.id.country_data);
+            colorData = itemView.findViewById(R.id.car_color_data);
         }
 
 }

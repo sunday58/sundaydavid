@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import sundaydavid.venten.adapter.CarDetailsAdapter;
 import sundaydavid.venten.data.CarOwnersList;
@@ -38,9 +39,6 @@ public class CarOwnersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_owners);
-
-        Intent intent = getIntent();
-        final VentenFilter filtersDetails = intent.getParcelableExtra("filters");
 
 
         FilterAsync filterAsync = new FilterAsync();
@@ -64,46 +62,264 @@ public class CarOwnersActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(InputStream... inputStreams) {
 
-            InputStream is = getResources().openRawResource(R.raw.car_ownsers_data);
+            Intent intent = getIntent();
+            final VentenFilter filtersDetails = intent.getParcelableExtra("filters");
+            //filtering for only male
 
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(is, Charset.forName("UTF-8"))
-            );
+            if (filtersDetails.getGender().equals("") && filtersDetails.getCountries().isEmpty()
+                    && filtersDetails.getColors().isEmpty()){
 
-            String line = "";
+                InputStream is = getResources().openRawResource(R.raw.car_ownsers_data);
 
-            try {
-                reader.readLine();
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(is, Charset.forName("UTF-8"))
+                );
 
-                while ((line = reader.readLine()) != null){
-                    Log.d(TAG, "readCarOwnersData: " + line);
+                String line = "";
 
-                    String[] tokens = line.split(",");
+                try {
+                    reader.readLine();
 
-                    CarOwnersList list = new CarOwnersList();
+                    while ((line = reader.readLine()) != null){
+                        Log.d(TAG, "readCarOwnersData: " + line);
 
-                    //setters
-                    list.setBio(tokens[10]);
-                    list.setCar_color(tokens[7]);
-                    list.setCar_model(tokens[5]);
-                    list.setCountry(tokens[4]);
-                    list.setCar_model_year(tokens[6]);
-                    list.setEmail(tokens[3]);
-                    list.setFirst_name(tokens[1]);
-                    list.setLast_name(tokens[2]);
-                    list.setJob_title(tokens[9]);
-                    list.setGender(tokens[8]);
+                        String[] tokens = line.split(",");
 
-                    carOwnersLists.add(list);
+
+                        CarOwnersList list = new CarOwnersList();
+
+                        //setters
+                        list.setBio(tokens[10]);
+                        list.setCar_model(tokens[5]);
+                        list.setCar_model_year(tokens[6]);
+                        list.setEmail(tokens[3]);
+                        list.setFirst_name(tokens[1]);
+                        list.setLast_name(tokens[2]);
+                        list.setJob_title(tokens[9]);
+
+                        carOwnersLists.add(list);
+                    }
+                }catch (IOException e){
+                    Log.d(TAG, "readCarOwnersData: " + line, e);
+
+                    Toast.makeText(CarOwnersActivity.this, "Details of car owners not found", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
                 }
-            }catch (IOException e){
-                Log.d(TAG, "readCarOwnersData: " + line, e);
 
-                Toast.makeText(CarOwnersActivity.this, "Details of car owners not found", Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
+                return line;
+            }else if (filtersDetails.getGender().isEmpty() && filtersDetails.getColors().isEmpty()){
+
+                InputStream is = getResources().openRawResource(R.raw.car_ownsers_data);
+
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(is, Charset.forName("UTF-8"))
+                );
+
+                String line = "";
+
+                try {
+                    reader.readLine();
+
+                    while ((line = reader.readLine()) != null){
+                        Log.d(TAG, "readCarOwnersData: " + line);
+
+                        String[] tokens = line.split(",");
+
+
+                        CarOwnersList list = new CarOwnersList();
+
+                        //setters
+                        list.setBio(tokens[10]);
+                        list.setCar_model(tokens[5]);
+                        list.setCountry(tokens[4]);
+                        list.setCar_model_year(tokens[6]);
+                        list.setEmail(tokens[3]);
+                        list.setFirst_name(tokens[1]);
+                        list.setLast_name(tokens[2]);
+                        list.setJob_title(tokens[9]);
+
+                        carOwnersLists.add(list);
+                    }
+                }catch (IOException e){
+                    Log.d(TAG, "readCarOwnersData: " + line, e);
+
+                    Toast.makeText(CarOwnersActivity.this, "Details of car owners not found", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+                return line;
+            } else if (filtersDetails.getGender().equals("")){
+
+                InputStream is = getResources().openRawResource(R.raw.car_ownsers_data);
+
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(is, Charset.forName("UTF-8"))
+                );
+
+                String line = "";
+
+                try {
+                    reader.readLine();
+
+                    while ((line = reader.readLine()) != null){
+                        Log.d(TAG, "readCarOwnersData: " + line);
+
+                        String[] tokens = line.split(",");
+
+
+                        CarOwnersList list = new CarOwnersList();
+
+                        //setters
+                        list.setBio(tokens[10]);
+                        list.setCar_color(tokens[7]);
+                        list.setCar_model(tokens[5]);
+                        list.setCountry(tokens[4]);
+                        list.setCar_model_year(tokens[6]);
+                        list.setEmail(tokens[3]);
+                        list.setFirst_name(tokens[1]);
+                        list.setLast_name(tokens[2]);
+                        list.setJob_title(tokens[9]);
+
+                        carOwnersLists.add(list);
+                    }
+                }catch (IOException e){
+                    Log.d(TAG, "readCarOwnersData: " + line, e);
+
+                    Toast.makeText(CarOwnersActivity.this, "Details of car owners not found", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+                return line;
+
+            }else if (filtersDetails.getCountries().isEmpty()){
+
+                InputStream is = getResources().openRawResource(R.raw.car_ownsers_data);
+
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(is, Charset.forName("UTF-8"))
+                );
+
+                String line = "";
+
+                try {
+                    reader.readLine();
+
+                    while ((line = reader.readLine()) != null){
+                        Log.d(TAG, "readCarOwnersData: " + line);
+
+                        String[] tokens = line.split(",");
+
+
+                        CarOwnersList list = new CarOwnersList();
+
+                        //setters
+                        list.setBio(tokens[10]);
+                        list.setCar_color(tokens[7]);
+                        list.setCar_model(tokens[5]);
+                        list.setCar_model_year(tokens[6]);
+                        list.setEmail(tokens[3]);
+                        list.setFirst_name(tokens[1]);
+                        list.setLast_name(tokens[2]);
+                        list.setJob_title(tokens[9]);
+                        list.setGender(tokens[8]);
+
+                        carOwnersLists.add(list);
+                    }
+                }catch (IOException e){
+                    Log.d(TAG, "readCarOwnersData: " + line, e);
+
+                    Toast.makeText(CarOwnersActivity.this, "Details of car owners not found", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+                return line;
+            }else if (filtersDetails.getColors().isEmpty()){
+
+                InputStream is = getResources().openRawResource(R.raw.car_ownsers_data);
+
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(is, Charset.forName("UTF-8"))
+                );
+
+                String line = "";
+
+                try {
+                    reader.readLine();
+
+                    while ((line = reader.readLine()) != null){
+                        Log.d(TAG, "readCarOwnersData: " + line);
+
+                        String[] tokens = line.split(",");
+
+
+                        CarOwnersList list = new CarOwnersList();
+
+                        //setters
+                        list.setBio(tokens[10]);
+                        list.setCar_model(tokens[5]);
+                        list.setCountry(tokens[4]);
+                        list.setCar_model_year(tokens[6]);
+                        list.setEmail(tokens[3]);
+                        list.setFirst_name(tokens[1]);
+                        list.setLast_name(tokens[2]);
+                        list.setJob_title(tokens[9]);
+                        list.setGender(tokens[8]);
+
+                        carOwnersLists.add(list);
+                    }
+                }catch (IOException e){
+                    Log.d(TAG, "readCarOwnersData: " + line, e);
+
+                    Toast.makeText(CarOwnersActivity.this, "Details of car owners not found", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+                return line;
             }
 
-            return line;
+
+           else {
+                InputStream is = getResources().openRawResource(R.raw.car_ownsers_data);
+
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(is, Charset.forName("UTF-8"))
+                );
+
+                String line = "";
+
+                try {
+                    reader.readLine();
+
+                    while ((line = reader.readLine()) != null) {
+                        Log.d(TAG, "readCarOwnersData: " + line);
+
+                        String[] tokens = line.split(",");
+
+                        CarOwnersList list = new CarOwnersList();
+
+                        //setters
+                        list.setBio(tokens[10]);
+                        list.setCar_color(tokens[7]);
+                        list.setCar_model(tokens[5]);
+                        list.setCountry(tokens[4]);
+                        list.setCar_model_year(tokens[6]);
+                        list.setEmail(tokens[3]);
+                        list.setFirst_name(tokens[1]);
+                        list.setLast_name(tokens[2]);
+                        list.setJob_title(tokens[9]);
+                        list.setGender(tokens[8]);
+
+                        carOwnersLists.add(list);
+                    }
+                } catch (IOException e) {
+                    Log.d(TAG, "readCarOwnersData: " + line, e);
+
+                    Toast.makeText(CarOwnersActivity.this, "Details of car owners not found", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+                return line;
+            }
         }
 
         @Override
