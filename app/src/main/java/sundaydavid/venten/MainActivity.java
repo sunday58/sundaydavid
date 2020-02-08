@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setMessage("please wait");
         progressDialog.show();
 
-
         (Api.getClient().getVentenFilter()).enqueue(new Callback<List<VentenFilter>>() {
             @Override
             public void onResponse(Call<List<VentenFilter>> call, Response<List<VentenFilter>> response) {

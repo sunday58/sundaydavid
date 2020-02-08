@@ -81,7 +81,6 @@ public class CarOwnersActivity extends AppCompatActivity {
                     reader.readLine();
 
                     while ((line = reader.readLine()) != null){
-                        Log.d(TAG, "readCarOwnersData: " + line);
 
                         String[] tokens = line.split(",");
 
@@ -308,6 +307,8 @@ public class CarOwnersActivity extends AppCompatActivity {
                         list.setLast_name(tokens[2]);
                         list.setJob_title(tokens[9]);
                         list.setGender(tokens[8]);
+
+                        Log.d(TAG, "gender: " + tokens[8] );
 
                         carOwnersLists.add(list);
                     }

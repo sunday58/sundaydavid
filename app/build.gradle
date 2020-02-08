@@ -34,10 +34,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'androidx.cardview:cardview:1.0.0'
 
-    //openCsv
-    implementation 'com.opencsv:opencsv:4.6'
 
-
+    // testing
     implementation 'org.hamcrest:hamcrest-core'
     implementation 'org.hamcrest:hamcrest-library:1.3'
 }
